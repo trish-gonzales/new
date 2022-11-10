@@ -9,6 +9,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/Main/Home.html'));
 });
 
+app.get('/support', (req, res) => {
+    res.sendFile(path.join(__dirname, '/Main/faq.html'));
+});
+
 app.listen(process.env.PORT || 8000, function(){
     console.log('Connected to localhost:8000');
 });
