@@ -29,8 +29,35 @@
             <h4>Welcome</h4>
             <button class="btn btn-sm-outline-primary btn-sm" type="button">Login</button>
             <button class="btn btn-sm-outline-primary btn-sm" id="signinbtn">Register</button>
-        </div>
         
+            <!--Login popup-->
+            <div class="modal fade" id="ModalLogin" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title"><b>Log In</b></h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                        </div>
+
+                        <div class="modal-body" div id="loginform">
+                            <form>
+                                <div class="mb-2">
+                                    <input type="text" class="form-control" name="user" id="username" placeholder="Username"></label>
+                                </div>
+                                
+                                <div class="mb-2">
+                                    <input type="text" class="form-control" name="pass" id="password" placeholder="Password"></label>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-dark" id="Signin">Sign In</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!--NAVIGATION BAR-->
