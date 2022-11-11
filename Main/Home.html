@@ -25,17 +25,18 @@
     <div class="jumbotron text-center" style="margin-top: 50px; margin-bottom: 0;">
         <h1>Clothing Deals Finder</h1>
         
+        <!--login/signup-->
         <div class="container text-center">
             <h4>Welcome</h4>
-            <button class="btn btn-sm-outline-primary btn-sm" type="button">Login</button>
-            <button class="btn btn-sm-outline-primary btn-sm" id="signinbtn">Register</button>
+            <button class="btn btn-sm-outline-primary btn-sm" type="button" id="loginbtn" data-bs-toggle="modal" data-bs-target="#ModalLogin">Login</button>
+            <button class="btn btn-sm-outline-primary btn-sm" type="button" id="signupbtn">Register</button>
         
             <!--Login popup-->
             <div class="modal fade" id="ModalLogin" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title"><b>Log In</b></h4>
+                            <h5 class="modal-title"><b>Log In</b></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
                         </div>
 
@@ -50,7 +51,7 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-dark" id="Signin">Sign In</button>
+                                    <button type="submit" class="btn btn-dark" id="Login">Log In</button>
                                 </div>
                             </form>
                         </div>
