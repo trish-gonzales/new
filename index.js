@@ -17,6 +17,10 @@ app.get('/feedback', (req, res) => {
     res.sendFile(path.join(__dirname, '/Main/feedback.html'));
 });
 
+app.get('/tos', (req, res) => {
+    res.sendFile(path.join(__dirname, '/Main/tos.html'));
+});
+
 app.listen(process.env.PORT || 8000, function(){
     console.log('Connected to localhost:8000');
 });
