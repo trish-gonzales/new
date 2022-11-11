@@ -21,6 +21,10 @@ app.get('/tos', (req, res) => {
     res.sendFile(path.join(__dirname, '/Main/tos.html'));
 });
 
+app.get('/privacy', (req, res) => {
+    res.sendFile(path.join(__dirname, '/Main/privacyPolicy.html'));
+});
+
 app.listen(process.env.PORT || 8000, function(){
     console.log('Connected to localhost:8000');
 });
