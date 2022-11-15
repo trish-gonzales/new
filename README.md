@@ -45,6 +45,7 @@ git push -uf origin main
 ## To run project locally 
 ```
 git clone repo in local directory
+cd into directory
 run npm install - to install all project dependencies 
 run npm start - to start server, will be running on localhost:8000
 ```
