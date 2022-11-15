@@ -101,9 +101,13 @@ app.post('/register', checkNotAuthenticated, async function(req, res){
     }
 });
 
-app.delete('/logout', function(req, res){
-    req.logOut()
-    res.redirect('/login');
+app.get('/logout', function(req, res, next) {
+    req.logout(function(err) {
+      if (err) { 
+        return next(err); 
+        }
+      res.redirect('/');
+    });
 });
 
 app.get('/support', (req, res) => {
