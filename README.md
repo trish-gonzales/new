@@ -41,3 +41,10 @@ git remote add origin https://gitlab.com/cps731-team9/cps731-phase2.git
 git branch -M main
 git push -uf origin main
 ```
+
+## To run project locally 
+'''
+git clone repo in local directory
+run npm install - to install all project dependencies 
+run npm start - to start server, will be running on localhost:8000
+'''
