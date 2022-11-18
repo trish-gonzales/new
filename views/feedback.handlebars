@@ -1,50 +1,71 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Leave a Feedback</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/CSS/main.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Send Feedback Message</title>
 
+    <link rel="stylesheet" href="/public/CSS/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
 <body>
-    <div class="container">
-        <form method="post" action="/send_feedback">
+    <div class="jumbotron">
+        <h1 style="margin-left: 50px">Feedback</h1>
+        <h5 style="margin-left: 50px">Send a Message to us about your overall Experience</h5>
+    </div>
+    <form method="POST" action="/send_feedback">
+        <div class="msgcontainer">
+            {{ msg }}
+        </div>
+        <div class="formcontainer">
             <div class="row">
-                <div class="col-md-2">
-                    <div class="col-md-8">
-                        <h1 class="text-center mt-5 font-weight-bold">Feedback</h1>
-                        <hr class="bg-white">
-                        <h5 class="mt-2">Overall Experience</h3>
-                    </div>
+                <div class="col-xs-12 col-sm-12">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" placeholder="Your name">
                 </div>
             </div>
-            <label class="radiobtn"><input type="radio" name="experience" value="bad">Good</label>
-            <label class="radiobtn"><input type="radio" name="experience" value="bad">Acceptable</label>
-            <label class="radiobtn"><input type="radio" name="experience" value="bad">Bad</label>
             <div class="row">
-                <div class="col-md-2"></div>
-                    <label class="col-md-4">Full Name<br>
-                    <input type="text" id="text" name="name"></label>
-                    <label class="col-md-4">Email<br>
-                    <input type="text" id="text" name="email"></label>
+                <div class="col-xs-12 col-sm-12">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" placeholder="Your email">
+                </div>
             </div>
             <div class="row">
-                <div class="col-md-2"></div>
-                    <label class="col-md-4">Phone Number<br>
-                    <input type="number" id="text" name="number"></label>
+                <div class="col-xs-12 col-sm-12">
+                    <label>Experience</label>
+                </div>
+                <div class="col-xs-12 col-sm-12">
+                    <label class="radiobtn"><input type="radio" name="experience" value="bad">Great</label>
+                    <label class="radiobtn"><input type="radio" name="experience" value="bad">Okay</label>
+                    <label class="radiobtn"><input type="radio" name="experience" value="bad">Bad</label>
+                    <label class="radiobtn"><input type="radio" name="experience" value="bad">Horrible</label>
+                </div>
             </div>
             <div class="row">
-                <div class="col-md-2"></div>
-                    <label class="col-md-4">Additional comments<br>
-                    <textarea id="comments" cols="80" rows="5" name="message"></textarea></label>
+                <div class="col-xs-12 col-sm-12">
+                    <label for="store">Select your favorite store: </label>
+                    <select name="store" id="list_of_stores">
+                        <option value="zara">Zara</option>
+                        <option value="h&m">H&M</option>
+                        <option value="uniqlo">Uniqlo</option>
+                        <option value="jacknjones">Jack and Jones</option>
+                    </select>
+                </div>
             </div>
             <div class="row">
-                <div class="col-md-2"></div>
-                <button class="btn btn-primary" style="width: 55%; position:relative">Send Feedback</button>
+                <div class="col-xs-12 col-sm-12">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" placeholder="Your message..." style="height:200px"></textarea>
+                </div>
             </div>
-        </form>                  
-    </div>
+            <div class="submitB">
+                <button type="submit">Send</button>
+            </div>
+        </div>
+    </form>
 </body>
 </html>

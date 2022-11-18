@@ -43,7 +43,9 @@ app.use(session({
 }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // passport.js
 app.use(passport.initialize());
@@ -129,30 +131,25 @@ app.post('/send_feedback', (req, res) => {
     const user_feedback = `
         <p>Feedback from user</p>
         <ul>
-            <li>Experience: ${req.body.experience}</li>
             <li>Name: ${req.body.name}</li>
-            <li>Phone Number: ${req.body.number}</li>
             <li>Email: ${req.body.email}</li>
-            <li>Message: ${req.body.message}</li>
+            <li>Experience: ${req.body.experience}</li>
+            <li>Favorite Store: ${req.body.store}</li>
         </ul>
+        <h3>User feedback</h3>
+        <p>Message: ${req.body.message}</p>
     `;
-
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 465,
         secure: true,
         auth: {
             type: 'OAuth2',
-            user: 'nmailer69@gmail.com',
-            clientId: '157778543832-9tsif7g9fdi9lpgnnvtgu0ka6ois4d8a.apps.googleusercontent.com',
-            clientSecret: 'Pq7h0sB7ZkJh1BQoo1vyT7lD',
-            refreshToken: '1//04iCCyEXgaeiDCgYIARAAGAQSNwF-L9IruQwjVPUPheoQb4G8Bpyv3_M2KFjSAwttMSwySQ8HhwZmfTzURlfPs0OH9PfpNS6Wq4o',
-            accessToken: 'ya29.a0AfH6SMD_MGOhwvMg8uCt9av1Quu7VndbymfeCS0MRKEjtXOvd9Ra5m5eXWBMfm-OjZtwifkmDiWe8zFgT_3PeFu2RJQd2F12nJIB1gamG2IlsHDpp0rpVqJODqFUxmyCH8vtV30uuY7tt3Pflc9rXYABHkRrhemXxlBokBVTg3s'
-            // user: process.env.EMAIL, // generated ethereal use
-            // clientId: process.env.GOOGLE_CLIENT_ID,
-            // clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            // refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
-            // accessToken: process.env.GOOGLE_ACCESS_TOKEN
+            user: process.env.EMAIL, // generated ethereal use
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
+            accessToken: process.env.GOOGLE_ACCESS_TOKEN
         },
         tls : {
             rejectUnauthorized : false
@@ -166,7 +163,8 @@ app.post('/send_feedback', (req, res) => {
         text: "Hello world?", // plain text body
         html: user_feedback, // html body
     });
-    console.log(info)
+    // console.log(info)
+    res.render('feedback', {msg: 'Message sent, thank you!', layout: false});
 });
 
 app.get('/tos', (req, res) => {
