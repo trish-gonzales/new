@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== 'production'){
 
 const express = require('express');
 const session = require('express-session');
+const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const localStrategy = require('passport-local').Strategy;
@@ -12,6 +13,8 @@ const passport = require('passport');
 const flash = require('express-flash');
 const methodOverride = require('method-override');
 const initializePassport = require('./passport-config');
+const nodemailer = require('nodemailer');
+const xoauth2 = require('xoauth2');
 const path = require('path');
 const User = require('./model/user');
 
@@ -29,6 +32,8 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/clothingd
 // middlwear
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('view engine', 'handlebars');
+app.engine('handlebars', exphbs.engine({ extname: '.handlebars', defaultLayout: "main"}));
 app.use(express.static(path.join(__dirname, 'Main')));
 app.use(flash());
 app.use(session({
@@ -38,6 +43,9 @@ app.use(session({
 }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // passport.js
 app.use(passport.initialize());
@@ -114,8 +122,40 @@ app.get('/support', (req, res) => {
     res.sendFile(path.join(__dirname, '/Main/faq.html'));
 });
 
-app.get('/feedback', (req, res) => {
-    res.sendFile(path.join(__dirname, '/Main/feedback.html'));
+app.get('/feedback', checkAuthenticated, (req, res) => {
+    res.render('feedback.handlebars', {layout: false});
+});
+
+app.post('/send_feedback', (req, res) => {
+    const user_feedback = `
+        <p>Feedback from user</p>
+        <ul>
+            <li>Name: ${req.body.name}</li>
+            <li>Email: ${req.body.email}</li>
+            <li>Experience: ${req.body.experience}</li>
+            <li>Favorite Store: ${req.body.store}</li>
+        </ul>
+        <h3>User feedback</h3>
+        <p>Message: ${req.body.message}</p>
+    `;
+    let transporter = nodemailer.createTransport({
+        host: "smtp.ethereal.email",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+          user: process.env.EMAIL, // generated ethereal user
+          pass: process.env.PASSWORD, // generated ethereal password
+        },
+      });
+
+    let info = transporter.sendMail({
+        from: `${req.body.email}`,
+        to: process.env.EMAIL, // list of receivers
+        subject: "Clothing Deal Finder Customer Review", // Subject line
+        text: "Hello world?", // plain text body
+        html: user_feedback, // html body
+    });
+    res.render('feedback', {msg: 'Message sent, thank you!', layout: false});
 });
 
 app.get('/tos', (req, res) => {
