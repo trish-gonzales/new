@@ -27,6 +27,11 @@ input[type=text], textarea {
   resize: vertical;
 }
 
+.radiobtn{
+  margin: 10px 40px 20px 10px;
+  cursor: pointer;
+}
+
 button[type=submit] {
   background-color: rgb(41, 151, 44);
   color: white;

@@ -122,8 +122,7 @@ app.get('/support', (req, res) => {
     res.sendFile(path.join(__dirname, '/Main/faq.html'));
 });
 
-app.get('/feedback', (req, res) => {
-    // res.sendFile(path.join(__dirname, '/Main/feedback.html'));
+app.get('/feedback', checkAuthenticated, (req, res) => {
     res.render('feedback.handlebars', {layout: false});
 });
 
@@ -139,31 +138,23 @@ app.post('/send_feedback', (req, res) => {
         <h3>User feedback</h3>
         <p>Message: ${req.body.message}</p>
     `;
-    const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true,
+    let transporter = nodemailer.createTransport({
+        host: "smtp.ethereal.email",
+        port: 587,
+        secure: false, // true for 465, false for other ports
         auth: {
-            type: 'OAuth2',
-            user: process.env.EMAIL, // generated ethereal use
-            clientId: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
-            accessToken: process.env.GOOGLE_ACCESS_TOKEN
+          user: process.env.EMAIL, // generated ethereal user
+          pass: process.env.PASSWORD, // generated ethereal password
         },
-        tls : {
-            rejectUnauthorized : false
-        }
-    });
+      });
 
     let info = transporter.sendMail({
-        from: '"Portfolio Contact" <nmailer69@gmail.com>', // sender address
-        to: "harrison.arranzhurtado@gmail.com", // list of receivers
-        subject: "Porfolio contact request", // Subject line
+        from: `${req.body.email}`,
+        to: process.env.EMAIL, // list of receivers
+        subject: "Clothing Deal Finder Customer Review", // Subject line
         text: "Hello world?", // plain text body
         html: user_feedback, // html body
     });
-    // console.log(info)
     res.render('feedback', {msg: 'Message sent, thank you!', layout: false});
 });
 
