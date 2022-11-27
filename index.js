@@ -119,6 +119,10 @@ app.get('/logout', function(req, res, next) {
 });
 
 app.get('/support', (req, res) => {
+    res.sendFile(path.join(__dirname, '/Main/Support.html'));
+});
+
+app.get('/faq', (req, res) => {
     res.sendFile(path.join(__dirname, '/Main/faq.html'));
 });
 
