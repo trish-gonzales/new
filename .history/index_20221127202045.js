@@ -14,7 +14,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-function writeDeals (name,brand,discount,oldprice,newprice) {
+function writeDeals (name,brand,discount,oldprice,newprice){
 const db = getDatabase();
 const reference = ref (db, 'deals/' + deals);
 
@@ -25,11 +25,11 @@ set(reference, {
     discount: discount,
     oldprice: oldprice,
     newprice: newprice
-    });
+});
 
 }
 
-writeDeals("floralshirt","zara", "20", "20", "16");
+writeDeals("floral shirt","zara", "20%", "$20", "$16");
 
 
 if (process.env.NODE_ENV !== 'production'){
