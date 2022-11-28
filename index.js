@@ -173,3 +173,18 @@ app.get('/privacy', (req, res) => {
 app.listen(process.env.PORT || 8000, function(){
     console.log('Connected to localhost:8000');
 });
+
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCY10-8rf5MfWL1VNWnKYG_b4dogJX2odA",
+    authDomain: "clothingapp-1f197.firebaseapp.com",
+    databaseURL: "https://clothingapp-1f197-default-rtdb.firebaseio.com",
+    projectId: "clothingapp-1f197",
+    storageBucket: "clothingapp-1f197.appspot.com",
+    messagingSenderId: "318379295880",
+    appId: "1:318379295880:web:cbf3d19154a54c675c0b3d",
+    measurementId: "G-HQ0MFE1R31"
+  };
+
+const app = initializeApp(firebaseConfig);
