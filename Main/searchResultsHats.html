@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <!--JQUERY-->
+      <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+      <!--BOOTSTRAP-->
+      <!-- CSS only -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+      <link rel="stylesheet" href="/CSS/style.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!-- JavaScript Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+      <!--MAIN JS FILE-->
+      <script src="/JS/Main.js"></script>
+    </head>
+
+
+<body>
+
+  <div class="jumbotron text-center" style="margin-top: 50px; margin-bottom: 0;">
+    <h1>Clothing Deals Finder</h1>
+    <h4>Welcome</h4>
+    <a href="/logout">Logout</a>
+</div>
+
+<!--NAVIGATION BAR-->
+<nav class="navbar navbar-expand navbar-dark bg-dark" >
+    <a class="navbar-brand" href="/" style="margin-left: 30px;">Clothing Deals Finder</a>
+    <button type="button" data-bs-toggle="collapse" data-bs-target="#Navigationbar" class="navbar-toggler">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="#Navigationbar">
+        <ul class="navbar-nav">
+
+            <li class="nav-item active">
+                <a href="/" class="nav-link">Home</a>
+             </li>
+
+            <li class="nav-item active">
+                <a href="/deals" class="nav-link">Deals</a>
+            </li>
+
+            <li class="nav-item active">
+                <a href="/shop" class="nav-link">Clothing</a>
+            </li>
+
+            <li class="nav-item active">
+                <a href="/location" class="nav-link">Nearby</a>
+            </li>
+
+            <li class="nav-item active">
+                <a href="/support" class="nav-link">Support</a>
+            </li>
+        </ul>
+    
+        <!--SEARCH BAR-->
+        <form class="form-inline input-group my-lg-0 w-25 ms-auto">
+          <input class="form-control" type="search" value= "" id = "search" onchange="openPage()" placeholder="Search" aria-label="Search">
+
+          <script>
+              function openPage(){
+                  var x = document.getElementById("search").value;
+
+                  if (x== "hats"){
+                      window.open("searchResultsHats.html");
+                  }
+
+                  if (x== "footwear"){
+                      window.open("searchResultsFootwear.html");
+                  }
+                  if (x != "footwear" && x != "hats"){
+                      window.open("searchResultsNone.html");
+                        }
+              }
+
+          </script>
+          <button class="btn btn-outline-primary" type="submit">
+              <i class="fa fa-search"></i>
+          </button>  
+      </form>
+
+        <!--Cart-->
+        <div class="button" style="margin-left: 10px; margin-right: 10px;">
+            <button type="button" class="btn btn-outline-secondary">
+                <i class="fa fa-shopping-cart"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!--Footer-->
+<nav class="navbar navbar-expand navbar-dark bg-dark fixed-bottom">
+    <a class="navbar-brand" href="#"></a>
+    <button type="button" data-bs-toggle="collapse" data-bs-target="#NavBottom" class="navbar-toggler">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse nav justify-content-center" id="#NavBottom">
+        <ul class="navbar-nav">
+
+            <li class="nav-item active">
+                <a href="/privacy" class="nav-link">Privacy Policy</a>
+             </li>
+
+             <li class="nav-item active">
+                <a href="/tos" class="nav-link">Terms & Conditions</a>
+             </li>
+
+             <li class="nav-item active">
+                <a href="/faq" class="nav-link">FAQ</a>
+             </li>
+        </ul>
+    </div>
+</nav>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+<div class="row">
+  <!-- BEGIN SEARCH RESULT -->
+  <div class="col-md-12">
+        <div class="row">
+            <hr>       
+            <div class="padding"></div>
+
+          </div>
+          <!-- BEGIN RESULT -->
+
+            <h4><i class="fa fa-file-o"></i> showing results for "hats"</h4>
+            <hr>          
+            <div class="padding"></div>
+            
+            <div class="row">            
+              <div class="col-md-6 text-right">
+                <div class="btn-group">
+                </div>
+              </div>
+            </div>
+            
+            <!-- BEGIN TABLE RESULT -->
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <tbody><tr>
+                  <td class="number text-center">1</td>
+                  <td class="image"><img src="https://cdn.shopify.com/s/files/1/0431/2082/0389/products/xomxojch3mg4ifecmdst_460x.jpg?v=1652675067" alt=""></td>
+                  <td class="product"><strong>Product Name</strong><br>Wesley Packable Fedora</td>
+                  <td class="product"><strong>Outlet Name</strong><br>Brixton</td>
+                  <td class="price text-right"><strong>Price</strong><br>$36.00</td>
+                  <td class="product"><strong>Website</strong><br><a href="https://ca.brixton.com/products/wesley-packable-fedora-coffee?gclid=Cj0KCQiA-JacBhC0ARIsAIxybyMk3MVK1wmAE9DIF-5V3GwbVXS4L6sI_dlHcXrx-WFCwTBm6fW5KVoaAtpAEALw_wcB">Go to website</a></td>
+                </tr>
+                <tr>
+                  <td class="number text-center">2</td>
+                  <td class="image"><img src="https://lh3.googleusercontent.com/spp/AM1yTs5vJ-uBOUPVU0bb-btstKJs7CNoyKZJIiQCdazk9wN4Xk6o7yutvV-yh2hI-dkv1EfIQxCXdPxcNjuNureORhV1kGFsaYofnhpKmz64MJqdTcK1ud6YfJHZ7PULrxy08mW02rseYLkSohwKAmmvMSyi6KhBL5kwWbg6Q4T7mzbkx8BkSIjfR9z1l_p1oZfGgDpj6cMrLiw=s512-rw-pd-pc0x00ffffff" alt=""></td>
+                  <td class="product"><strong>Product 2</strong><br>Pure Wool Fedora Hat in Black</td>
+                  <td class="product"><strong>Outlet Name</strong><br>Simons</td>
+                  <td class="price text-right"><strong>Price</strong><br>$29.95</td>
+                  <td class="product"><strong>Website</strong><br><a href="https://www.simons.ca/en/women-clothing--6660">Go to website</a></td>
+                </tr>
+              </tbody></table>
+            </div>
+  </div>
+  <!-- END SEARCH RESULT -->
+</div>
+</div>
+</body>
+    </html>
