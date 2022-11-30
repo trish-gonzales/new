@@ -1,0 +1,61 @@
+{
+  "deals": [{
+    "name": "Plaid Flannel",
+    "type": "tops",
+    "brand": "Forever 21",
+    "oldprice": "$30.00",
+    "discount": "70%",
+    "newprice": "$9.00",
+    "website" : "forever21.com"
+
+  }, {
+    "name": "Cropped Top",
+    "type": "tops",
+    "brand": "Forever 21",
+    "oldprice": "$15.00",
+    "discount": "70%",
+    "newprice": "$4.50",
+    "website" : "forever21.com"
+
+  }, {
+    "name": "Skinny Jeans",
+    "type": "bottoms",
+    "brand": "Uniqlo",
+    "oldprice": "$20.00",
+    "discount": "20%",
+    "newprice": "$16",
+    "website" : "uniqlo.com"
+
+  }, {
+    "name": "Leggings",
+    "type": "bottoms",
+    "brand": "H&M",
+    "oldprice": "$15.00",
+    "discount": "20%",
+    "newprice": "$12",
+    "website" : "uniqlo.com"
+
+  }, 
+
+  {
+    "name": "Oversized Hat",
+    "type": "accessories",
+    "brand": "H&M",
+    "oldprice": "$20.00",
+    "discount": "50%",
+    "newprice": "$10",
+    "website" : "hm.com"
+
+  }, 
+
+  {
+    "name": "Silve Earrings",
+    "type": "accessories",
+    "brand": "H&M",
+    "oldprice": "$10.00",
+    "discount": "50%",
+    "newprice": "$2.5",
+    "website" : "hm.com"
+
+  }
+]}
